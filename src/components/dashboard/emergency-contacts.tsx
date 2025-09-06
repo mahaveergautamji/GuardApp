@@ -4,7 +4,7 @@ import { Phone, Building } from 'lucide-react';
 
 export default function EmergencyContacts() {
   return (
-    <Card className="bg-destructive/5 border-destructive/20">
+    <Card className="bg-destructive/10 border-destructive/30">
       <CardHeader>
         <CardTitle className="text-destructive flex items-center gap-2">
           <Phone />
@@ -21,7 +21,7 @@ export default function EmergencyContacts() {
         </Button>
         <Button
           variant="outline"
-          className="w-full justify-start gap-3 pl-4 border-destructive/50 text-destructive hover:bg-destructive/10 hover:text-destructive"
+          className="w-full justify-start gap-3 pl-4 border-destructive/50 text-destructive hover:bg-destructive/20 hover:text-destructive"
         >
           <Building className="h-5 w-5" />
           Contact Transit Authority
