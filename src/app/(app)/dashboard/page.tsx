@@ -26,7 +26,7 @@ const DashboardPage: NextPage = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground">
               Here you can view real-time safety alerts, report incidents, and plan your
               journey with safety in mind. Stay aware and travel smart.
             </p>
@@ -38,7 +38,7 @@ const DashboardPage: NextPage = () => {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Siren className="text-accent" />
+            <Siren className="text-primary" />
             Real-Time Alerts
           </CardTitle>
           <CardDescription>
