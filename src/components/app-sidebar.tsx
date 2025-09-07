@@ -11,6 +11,7 @@ import {
   ShieldAlert,
   Map,
   User,
+  Info,
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -44,6 +45,11 @@ const menuItems = [
     href: '/routes',
     label: 'Route Planner',
     icon: Map,
+  },
+  {
+    href: '/credits',
+    label: 'Credits',
+    icon: Info,
   },
 ];
 
