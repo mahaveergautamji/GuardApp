@@ -12,6 +12,7 @@ import type { AnalyzeRiskInput, AnalyzeRiskOutput } from '@/ai/flows/ai-risk-ass
 import { getRiskAnalysis } from '@/app/(app)/risk-assessment/actions';
 import { mockAnalyzeRiskInput } from '@/lib/mock-data';
 import { Badge } from '../ui/badge';
+import { Separator } from '../ui/separator';
 
 export default function RiskAnalyzer() {
   const [isPending, startTransition] = useTransition();
@@ -49,7 +50,7 @@ export default function RiskAnalyzer() {
   };
 
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
+    <div className="flex flex-col gap-8">
       <Card>
         <CardHeader>
           <CardTitle>Analysis Input</CardTitle>
@@ -59,27 +60,29 @@ export default function RiskAnalyzer() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="incident-reports">Incident Reports</Label>
-              <Textarea
-                id="incident-reports"
-                value={incidentReports}
-                onChange={(e) => setIncidentReports(e.target.value)}
-                rows={10}
-                className="font-code text-xs"
-              />
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="incident-reports">Incident Reports</Label>
+                <Textarea
+                  id="incident-reports"
+                  value={incidentReports}
+                  onChange={(e) => setIncidentReports(e.target.value)}
+                  rows={10}
+                  className="font-mono text-xs"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="transit-routes">Transit Routes</Label>
+                <Textarea
+                  id="transit-routes"
+                  value={transitRoutes}
+                  onChange={(e) => setTransitRoutes(e.target.value)}
+                  rows={10}
+                  className="font-mono text-xs"
+                />
+              </div>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="transit-routes">Transit Routes</Label>
-              <Textarea
-                id="transit-routes"
-                value={transitRoutes}
-                onChange={(e) => setTransitRoutes(e.target.value)}
-                rows={6}
-                className="font-code text-xs"
-              />
-            </div>
-            <Button type="submit" disabled={isPending}>
+            <Button type="submit" disabled={isPending} className="w-full sm:w-auto">
               {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Analyze Risk
             </Button>
@@ -87,13 +90,15 @@ export default function RiskAnalyzer() {
         </CardContent>
       </Card>
 
+      <Separator />
+
       <div className="space-y-6">
         <h2 className="text-xl font-semibold font-headline">Analysis Results</h2>
         {isPending && (
-          <div className="flex items-center justify-center rounded-lg border p-8">
+          <Card className="flex items-center justify-center p-8">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
             <p className="ml-4 text-muted-foreground">AI is analyzing the data...</p>
-          </div>
+          </Card>
         )}
         {error && (
           <Alert variant="destructive">
@@ -103,11 +108,11 @@ export default function RiskAnalyzer() {
           </Alert>
         )}
         {result && (
-          <div className="space-y-6">
-            <Card>
+          <div className="grid gap-6 lg:grid-cols-3">
+            <Card className="lg:col-span-1">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Shield /> Overall Risk Assessment
+                  <Shield /> Overall Risk
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -128,37 +133,35 @@ export default function RiskAnalyzer() {
               </CardContent>
             </Card>
 
-            <div>
-              <h3 className="text-lg font-semibold mb-2 font-headline">High-Risk Areas</h3>
-              <div className="space-y-4">
-                {result.highRiskAreas.map((area, i) => (
-                  <Card key={i}>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <MapPin className="text-destructive" /> {area.area}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <div className="flex items-center gap-2 text-sm">
-                        <Clock className="h-4 w-4 text-muted-foreground" />
-                        <strong>High-Risk Times:</strong>
-                        <span>{area.times.join(', ')}</span>
+            <div className="lg:col-span-2 space-y-4">
+              <h3 className="text-lg font-semibold font-headline">High-Risk Areas</h3>
+              {result.highRiskAreas.map((area, i) => (
+                <Card key={i}>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <MapPin className="text-destructive" /> {area.area}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-center gap-2 text-sm">
+                      <Clock className="h-4 w-4 text-muted-foreground" />
+                      <strong>High-Risk Times:</strong>
+                      <span>{area.times.join(', ')}</span>
+                    </div>
+                    <div>
+                      <h4 className="font-medium mb-2 text-sm flex items-center gap-2">
+                        <ShieldAlert className="h-4 w-4 text-muted-foreground" />
+                        Risk Factors:
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {area.riskFactors.map((factor, j) => (
+                          <Badge key={j} variant="outline">{factor}</Badge>
+                        ))}
                       </div>
-                      <div>
-                        <h4 className="font-medium mb-2 text-sm flex items-center gap-2">
-                          <ShieldAlert className="h-4 w-4 text-muted-foreground" />
-                          Risk Factors:
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {area.riskFactors.map((factor, j) => (
-                            <Badge key={j} variant="outline">{factor}</Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         )}
