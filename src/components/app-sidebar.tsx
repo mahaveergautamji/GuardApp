@@ -12,6 +12,7 @@ import {
   Map,
   User,
   Info,
+  Users,
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -45,6 +46,11 @@ const menuItems = [
     href: '/routes',
     label: 'Route Planner',
     icon: Map,
+  },
+  {
+    href: '/community',
+    label: 'Community',
+    icon: Users,
   },
   {
     href: '/credits',

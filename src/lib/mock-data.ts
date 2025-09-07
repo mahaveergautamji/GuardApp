@@ -44,3 +44,9 @@ export const routeStops = [
     "University Campus",
     "Hospital"
 ];
+
+export const communityPosts = [
+  { id: 1, author: 'Jane Doe', time: '2 hours ago', content: 'Bus 42A is running about 15 minutes late. Plan accordingly!', likes: 12, comments: 3 },
+  { id: 2, author: 'John Smith', time: '5 hours ago', content: 'There\'s a high police presence at Central Station this evening. Seems like they\'re cracking down on pickpocketing.', likes: 45, comments: 11 },
+  { id: 3, author: 'Emily White', time: 'Yesterday', content: 'Lost a blue umbrella on the Route 12 bus this morning. If anyone finds it, please let me know!', likes: 5, comments: 2 },
+];
