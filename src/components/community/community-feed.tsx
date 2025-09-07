@@ -49,7 +49,7 @@ export default function CommunityFeed() {
               />
             </CardContent>
             <CardFooter>
-              <Button type="submit">Post Update</Button>
+              <Button type="submit" className="w-full sm:w-auto">Post Update</Button>
             </CardFooter>
           </form>
         </Card>

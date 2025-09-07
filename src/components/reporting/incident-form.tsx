@@ -54,7 +54,7 @@ export default function IncidentForm() {
     console.log(data);
     toast({
       title: 'Report Submitted',
-      description: 'Thank you for helping improve our community\'s safety.',
+      description: "Thank you for helping improve our community's safety.",
     });
     form.reset();
   }
@@ -145,7 +145,7 @@ export default function IncidentForm() {
                   <FormLabel>Upload Media (Optional)</FormLabel>
                   <FormControl>
                     <div className="relative">
-                      <Input type="file" className="pl-12" {...field} />
+                      <Input type="file" className="pl-12 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-primary-foreground hover:file:bg-primary/90" />
                       <Upload className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     </div>
                   </FormControl>
@@ -155,7 +155,7 @@ export default function IncidentForm() {
             />
           </CardContent>
           <CardFooter>
-            <Button type="submit" disabled={form.formState.isSubmitting}>
+            <Button type="submit" disabled={form.formState.isSubmitting} className="w-full sm:w-auto">
               {form.formState.isSubmitting ? 'Submitting...' : 'Submit Report'}
             </Button>
           </CardFooter>

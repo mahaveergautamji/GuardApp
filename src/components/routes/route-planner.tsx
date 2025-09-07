@@ -20,7 +20,7 @@ import {
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Walk, Bus, ShieldAlert, Clock } from 'lucide-react';
+import { Footprints, Bus, ShieldAlert, Clock } from 'lucide-react';
 import { routeStops } from '@/lib/mock-data';
 
 export default function RoutePlanner() {
@@ -94,7 +94,7 @@ export default function RoutePlanner() {
             <CardContent className="space-y-4">
               <div className="flex items-center">
                 <div className="flex flex-col items-center mr-4">
-                  <Walk className="h-6 w-6 text-primary" />
+                  <Footprints className="h-6 w-6 text-primary" />
                   <div className="h-10 w-px bg-border" />
                 </div>
                 <div>
@@ -123,7 +123,7 @@ export default function RoutePlanner() {
               
               <div className="flex items-center">
                 <div className="flex flex-col items-center mr-4">
-                  <Walk className="h-6 w-6 text-primary" />
+                  <Footprints className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <p className="font-semibold">Walk to {end}</p>
