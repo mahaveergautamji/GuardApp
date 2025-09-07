@@ -95,7 +95,7 @@ export function AppSidebar() {
                   <User />
                 </AvatarFallback>
               </Avatar>
-              <span className="truncate">Alex Ryder</span>
+              <span className="truncate">Mahaveer gautam</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
