@@ -75,7 +75,7 @@ export default function RoutePlanner() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button onClick={handleFindRoute} disabled={!start || !end}>
+            <Button onClick={handleFindRoute} disabled={!start || !end} className="w-full sm:w-auto">
               Find Safest Route
             </Button>
           </CardFooter>
@@ -133,7 +133,7 @@ export default function RoutePlanner() {
 
               <Separator />
 
-              <div className="flex justify-between items-center text-sm text-muted-foreground">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4" />
                   <span>Total Time: Approx. 23 mins</span>
