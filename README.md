@@ -24,8 +24,8 @@ Make sure you have the following installed on your system:
 
 1.  **Clone the repository** (if you haven't already):
     ```bash
-    git clone <your-repository-url>
-    cd <repository-folder>
+    git clone https://github.com/mahaveergautamji/GuardApp.git
+    cd GuardApp
     ```
 
 2.  **Install dependencies**:
